@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poo Patrol</title>
+
+    <!-- iOS Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=1672736791, app-argument=https://poopatrol.app">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --text: #222428;
+            --muted: #5c6068;
+            --accent: #6750A4;
+            --bg: #ffffff;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            margin: 48px 0 32px;
+            padding: 0 1.25rem;
+        }
+        header img {
+            height: 256px;
+            max-width: 70%;
+        }
+        h1 {
+            font-weight: 800;
+            font-size: 2.4rem;
+            letter-spacing: -.02em;
+            margin: 1rem 0 .4rem;
+        }
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.1rem;
+            font-weight: 600;
+            max-width: 28rem;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        img {
+            max-width: 100%;
+        }
+        footer {
+            margin-top: 40px;
+            padding-bottom: 32px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer a:hover { text-decoration: underline; }
+        .footer-links {
+            margin-bottom: 12px;
+        }
+        .store-links img {
+            height: 50px;
+            margin: 10px;
+        }
+        .store-links a {
+            display: inline-block;
+        }
+        .custom-banner {
+            display: none;
+            background: #f5f3fa;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .custom-banner a {
+            text-decoration: none;
+            font-weight: bold;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS Custom Banner -->
+    <div id="ios-banner" class="custom-banner">
+        <a href="https://apps.apple.com/se/app/poo-patrol/id1672736791">Open Poo Patrol on the App Store</a>
+    </div>
+
+    <!-- Android Custom Banner -->
+    <div id="android-banner" class="custom-banner">
+        <a href="https://play.google.com/store/apps/details?id=studio.snaps.android.poopatrol">Get Poo Patrol on Google Play</a>
+    </div>
+
+    <header>
+        <img src="appIcon.png" alt="Poo Patrol App Icon">
+        <h1>Poo Patrol</h1>
+        <p class="subtitle">Track &amp; analyze bowel movements, stool patterns, gut health &amp; digestive habits.</p>
+    </header>
+    <section class="store-links">
+        <a href="https://play.google.com/store/apps/details?id=studio.snaps.android.poopatrol" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+        </a>
+        <a href="https://apps.apple.com/se/app/poo-patrol/id1672736791" target="_blank">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+    </section>
+    <footer>
+        <div class="footer-links">
+            <a href="/privacy">Privacy Policy</a>
+        </div>
+        &copy; <span id="year"></span>
+        <a href="https://snaps.studio" target="_blank">Snaps Studio AB</a>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // User Agent Detection
+        document.addEventListener("DOMContentLoaded", function () {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Check for iOS
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                document.getElementById('ios-banner').style.display = 'block';
+            }
+            // Check for Android
+            else if (/android/i.test(userAgent)) {
+                document.getElementById('android-banner').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

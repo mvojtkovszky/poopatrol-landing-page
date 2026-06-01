@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Allow direct access to the app-ads.txt file
+RewriteRule ^app-ads\.txt$ - [L]
+
+# Internally rewrite /privacy or /privacy.html to privacy.html
+RewriteRule ^privacy/?$ privacy.html [NC,L]
+RewriteRule ^privacy\.html$ privacy.html [NC,L]
+
+# Exclude the .well-known directory and privacy.html from external redirection
+RewriteCond %{REQUEST_URI} !^/.well-known/ [NC]
+RewriteCond %{REQUEST_URI} !^/privacy.html$ [NC]
+
+# Serve index.html for requests to the root domain
+RewriteCond %{REQUEST_URI} !^/api [NC]
+RewriteCond %{REQUEST_URI} !^/app-ads\.txt$ [NC]
+RewriteCond %{REQUEST_URI} !^/appIcon\.png$ [NC]
+RewriteRule ^(.*)$ index.html [L]
